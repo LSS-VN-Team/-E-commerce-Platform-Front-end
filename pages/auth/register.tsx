@@ -1,14 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
+import * as Yup from 'yup';
 import React from 'react';
 import { AiFillLock } from 'react-icons/ai'
 import { BsFillPersonFill, BsFillKeyFill } from 'react-icons/bs'
 import { MdEmail } from 'react-icons/md'
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux'
 import { selectAllUser, Registers } from '@/feature/register/registerSlice';
-
 
 const RegisterSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
@@ -16,15 +15,12 @@ const RegisterSchema = Yup.object().shape({
   password: Yup.string().required('Password is required'),
   confirmPassword: Yup.string().oneOf([Yup.ref('password')], 'Passwords must match'),
   checkbox: Yup.boolean().oneOf([true], 'Checkbox must be checked')
-
-
 });
 export interface RegisterProps {
 }
 
 export default function Register(props: RegisterProps) {
   const dispatch = useDispatch()
-  const users = useSelector(selectAllUser)
   const formik = useFormik({
     initialValues: {
       name: '',

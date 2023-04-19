@@ -9,6 +9,7 @@ const sagaMiddleware = createSagaMiddleware();
 const makeStore = () => {
   const store = configureStore({
     reducer: rootReducer,
+    
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(sagaMiddleware),
   });

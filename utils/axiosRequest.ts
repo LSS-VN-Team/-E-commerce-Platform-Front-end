@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-import { TOKEN, ID } from "constants/storage";
+import { TOKEN, ID } from "@/constants/storage";
 const BACKEND_URL =
   process.env.REACT_APP_BACKEND_URL || "http://localhost:4000";
 export const axiosRequest = async (

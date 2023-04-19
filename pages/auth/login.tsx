@@ -1,12 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from 'next/link';
-import React from 'react';
+import * as Yup from 'yup';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux'
+import { useRouter } from 'next/router';
+import { AiFillEye } from 'react-icons/ai'
 import { FaFacebookSquare, FaTwitter } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { useSelector, useDispatch } from 'react-redux'
 import { loginHome } from '@/feature/login/loginSlice';
+import Link from 'next/link';
 export interface LoginProps {
 }
 const LoginSchema = Yup.object().shape({
@@ -16,6 +19,17 @@ const LoginSchema = Yup.object().shape({
 });
 export default function Login(props: LoginProps) {
   const dispatch = useDispatch()
+  const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false)
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      router.push('/');
+    } else {
+      router.push('/auth/login');
+    }
+  }, []);
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -64,16 +78,19 @@ export default function Login(props: LoginProps) {
                       ) : null}
                     </div>
                     <div>
-                      <div className='flex flex-col'>
+                      <div className='flex flex-col '>
                         <label className='text-gray-600 font-medium' htmlFor="pass"><span className='text-red-500'>*</span>Password</label>
-                        <input className='border-solid border-2 border-gray-300 focus:ring-1 w-[300px] py-2 rounded-md pl-3'
-                          id="password"
-                          name="password"
-                          type="password"
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.password}
-                          placeholder='Enter Password' />
+                        <div className='relative'>
+                          <div className='absolute right-0 m-2 p-1.5 rounded-full hover:bg-gray-200 text-gray-500 cursor-pointer' onClick={() => setShowPassword(!showPassword)} ><AiFillEye /></div>
+                          <input className='border-solid border-2 border-gray-300 focus:ring-1 w-[300px] py-2 rounded-md pl-3 '
+                            id="password"
+                            name="password"
+                            type={showPassword ? "text" : "password"}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.password}
+                            placeholder='Enter Password' />
+                        </div>
                       </div>
                       {formik.touched.password && formik.errors.password ? (
                         <div className=' text-red-500'>{formik.errors.password}</div>
