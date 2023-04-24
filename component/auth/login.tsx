@@ -10,14 +10,14 @@ import { FcGoogle } from 'react-icons/fc'
 import { useFormik } from 'formik';
 import { loginHome } from '@/feature/login/loginSlice';
 import Link from 'next/link';
-export interface LoginProps {
+export interface LoginFormProps {
 }
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
   password: Yup.string().required('Password is required'),
 
 });
-export default function Login(props: LoginProps) {
+export default function LoginForm(props: LoginFormProps) {
   const dispatch = useDispatch()
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false)
@@ -27,7 +27,7 @@ export default function Login(props: LoginProps) {
     if (token) {
       router.push('/');
     } else {
-      router.push('/auth/login');
+      router.push('/login');
     }
   }, []);
   const formik = useFormik({
@@ -45,7 +45,7 @@ export default function Login(props: LoginProps) {
       <div className='w-[1070px] h-[800px] shadow-boxsd bg-gradient-to-r from-orange-100 to-orange-300'>
         <div className='flex justify-between px-14 h-[50px] items-center'>
           <p className=' text-xl font-semibold'><span className='text-2xl font-bold text-purple-500'>E-</span>Commerce Platform</p>
-          <p className='font-bold'>New User? <Link href="/auth/register" className='text-purple-500 hover:text-purple-400 transition duration-300'>Sign Up</Link></p>
+          <p className='font-bold'>New User? <Link href="/register" className='text-purple-500 hover:text-purple-400 transition duration-300'>Sign Up</Link></p>
         </div>
 
         <div className='h-full flex justify-center items-center'>
@@ -82,7 +82,7 @@ export default function Login(props: LoginProps) {
                         <label className='text-gray-600 font-medium' htmlFor="pass"><span className='text-red-500'>*</span>Password</label>
                         <div className='relative'>
                           <div className='absolute right-0 m-2 p-1.5 rounded-full hover:bg-gray-200 text-gray-500 cursor-pointer' onClick={() => setShowPassword(!showPassword)} ><AiFillEye /></div>
-                          <input className='border-solid border-2 border-gray-300 focus:ring-1 w-[300px] py-2 rounded-md pl-3 '
+                          <input className='border-solid border-2 border-gray-300 w-[300px] py-2 rounded-md pl-3 '
                             id="password"
                             name="password"
                             type={showPassword ? "text" : "password"}
