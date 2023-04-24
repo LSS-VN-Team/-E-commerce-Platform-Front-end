@@ -5,3 +5,24 @@
 body {
     /* font-family: 'Outfit', sans-serif; */
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+  background: #00000026;
+} */
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+  background: #959595;
+  border-radius: 50px;
+} */
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
