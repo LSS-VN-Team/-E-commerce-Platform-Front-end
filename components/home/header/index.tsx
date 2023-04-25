@@ -65,7 +65,7 @@ export default function Header() {
           }`}
         />
       ))}
-      <div className="z-10 uppercase fixed font-extralight top-0 left-1/4 w-1/2 rounded-b-full h-10 bg-slate-800 flex items-center justify-center shadow-xl">
+      <div className="z-10 uppercase text-white fixed font-extralight top-0 left-1/4 w-1/2 rounded-b-full h-10 bg-slate-800 flex items-center justify-center shadow-xl">
         <span
           onClick={() => window.location.reload()}
           className="ml-9 cursor-pointer "
@@ -114,7 +114,7 @@ export default function Header() {
       TAN
     </button>
   ) : ( */}
-    <Link href="/auth/login" className="fixed top-9 right-32 text-black font-light uppercase">
+    <Link href="/login" className="fixed top-9 right-32 text-black font-light uppercase">
       log in
     </Link>
   {/* )} */}
