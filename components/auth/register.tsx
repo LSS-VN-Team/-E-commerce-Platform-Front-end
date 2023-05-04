@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import * as Yup from 'yup';
-import React from 'react';
+import React, { useState } from 'react';
 import { AiFillLock } from 'react-icons/ai'
 import { BsFillPersonFill, BsFillKeyFill } from 'react-icons/bs'
 import { MdEmail } from 'react-icons/md'
@@ -141,6 +141,7 @@ export default function RegisterForm(props: RegisterFormProps) {
                       type="checkbox"
                       className='ml-1 mr-3 h-4 w-4 scale-125'
                       {...formik.getFieldProps('admin')}
+                      onChange={(event) => formik.setValues({ ...formik.values, isAdmin: event.target.checked })}
                     />
                     <p className='font-semibold'>Do you want to register as admin?</p>
                   </div>

@@ -54,7 +54,7 @@ export default function Header() {
 
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative h-screen overflow-hidden ">
       {images.map((image, index) => (
         <img
           key={index}
@@ -141,7 +141,7 @@ export default function Header() {
             </ul>
             <button
               className="block mx-auto my-4 px-4 py-2 bg-gray-800 text-white rounded-md"
-              onClick={() => (window.location.href = "/cart")}
+              onClick={() => (window.location.href = "/mycart")}
             >
               Go to Cart
             </button>
