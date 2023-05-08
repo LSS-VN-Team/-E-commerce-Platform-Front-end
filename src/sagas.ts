@@ -1,3 +1,4 @@
+import AdminSaga from "@/feature/admin/adminSaga";
 import MyDashBoardSaga from "@/feature/dashboard/mydashboardSaga";
 import loginSaga from "@/feature/login/loginSaga";
 import MyCardSaga from "@/feature/mycart/mycartSaga";
@@ -9,7 +10,8 @@ function* rootSaga() {
     loginSaga(),
     registerSaga(),
     MyCardSaga(),
-    MyDashBoardSaga()
+    MyDashBoardSaga(),
+    AdminSaga()
   ]);
 }
 
