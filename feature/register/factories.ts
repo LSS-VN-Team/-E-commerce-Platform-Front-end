@@ -7,7 +7,7 @@ const factories = {
   Register: (data: IRegister) => {
     return axios({
       method: "post",
-      url: `${url}auth/register`,
+      url: `${url}auth/sign-up`,
       data: data,
     });
   },
